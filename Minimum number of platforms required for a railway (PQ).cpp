@@ -15,10 +15,12 @@ class Solution{
     	    v.push_back({arr[i],dep[i]});
     	}
     	sort(v.begin(),v.end());
-    	for(int i=0;i<n;i++)
+    	pq.push(v[0].second);
+    	for(int i=1;i<n;i++)
     	{
-    	    pq.push(v[i].second);
+    	   
     	    if(pq.top()<v[i].first) pq.pop(); // if train already left - remove lowest departure time
+    	     pq.push(v[i].second);
     	}
     	return pq.size();
     	
