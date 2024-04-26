@@ -1,5 +1,5 @@
 //https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
-
+/*
 Time Complexity: O(N log N) + O(N*M).
 
 O(N log N ) for sorting the jobs in decreasing order of profit. O(N*M) since we are iterating through all N jobs and for every job we are checking from the last deadline, say M deadlines in the worst case.
