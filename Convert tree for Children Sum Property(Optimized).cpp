@@ -47,7 +47,7 @@ public:
         changeTree(root->left);
         changeTree(root->right);
 int afterModification = (root->left ? root->left->val : 0) + (root->right ? root->right->val : 0);
-        if(root->left || root->right) root->val = afterModification; // only modify if atlease one of child is present else all will become 0.
+        if(root->left || root->right) root->val = afterModification; // only modify if atlease one of child is present else all will become 0. - it should not be lead node
     }
 };
 
