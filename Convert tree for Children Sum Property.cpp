@@ -24,31 +24,30 @@ class node
     }
 }; 
 
-void increment(node* root, int diff)
+void increment(node* root,int diff)
 {
     if(!root) return;
     if(root->left)
     {
-        root->left->data = root->left->data -diff;
+        root->left->data= root->left->data + diff;
         increment(root->left,diff);
     }
     else if(root->right)
     {
-        root->right->data = root->right->data -diff;
+        root->right->data= root->right->data + diff;
         increment(root->right,diff);
     }
 }
 void convertTree(node* root)
 {
-    if(!root) return;
-    if(!root || (!root->left && !root->right)) return;
-    convertTree(root->left);
-    convertTree(root->right);  // leftest node in left tree -> kyonki niche se shuru krkr upar jaana hai
-    int leftData = (root->left)?root->left->data:0;
-    int rightData = (root->right)?root->right->data:0;
-    int diff =  (leftData+rightData)- root->data;
-    if(diff>0) root->data+=diff;
-    else if(diff<0) increment(root,diff);
+   if(!root || (!root->left && !root->right)) return;
+   convertTree(root->left);
+   convertTree(root->right);
+   int leftData = (root->left)?root->left->data:0; // leftest node in left tree -> kyonki niche se shuru krkr upar jaana hai
+   int rightData =(root->right)?root->right->data:0;
+   int diff = root->data - (leftData+rightData);
+   if(diff<=0) root->data=root->data+ abs(diff);
+   else increment(root,diff);
 
 }
 void printInorder(node* node) 
