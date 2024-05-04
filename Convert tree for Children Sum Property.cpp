@@ -27,6 +27,7 @@ class node
 void increment(node* root,int diff)
 {
     if(!root) return;
+    //increment either left child or right child with difference
     if(root->left)
     {
         root->left->data= root->left->data + diff;
