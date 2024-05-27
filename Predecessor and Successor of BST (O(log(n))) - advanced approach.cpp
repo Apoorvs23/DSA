@@ -66,3 +66,100 @@ class Solution
     }
 
 };
+
+
+/*
+class Solution
+{
+   private:
+    void findPre(Node* root, Node*& pre, int key) {
+        if (!root) return;
+        while (root) {
+            if (root->key == key) {
+                if (root->left) {
+                    pre = root->left;
+                    while (pre->right) pre = pre->right;
+                }
+                return;
+            } else if (root->key < key) {
+                pre = root;
+                root = root->right;
+            } else {
+                root = root->left;
+            }
+        }
+    }
+
+    void findSuc(Node* root, Node*& suc, int key) {
+        if (!root) return;
+        while (root) {
+            if (root->key == key) {
+                if (root->right) {
+                    suc = root->right;
+                    while (suc->left) suc = suc->left;
+                }
+                return;
+            } else if (root->key < key) {
+                root = root->right;
+            } else {
+                suc = root;
+                root = root->left;
+            }
+        }
+    }
+
+public:
+    void findPreSuc(Node* root, Node*& pre, Node*& suc, int key) {
+        // Your code goes here
+        findPre(root, pre, key);
+        findSuc(root, suc, key);
+    }
+};
+*/
+
+
+// RECURSIVE
+
+/*
+class Solution {
+public:
+    void findPre(Node* root, Node*& pre, int key) {
+        if (!root) return;
+        
+        if (root->key == key) {
+            if (root->left) {
+                pre = root->left;
+                while (pre->right) pre = pre->right;
+            }
+        } else if (root->key < key) {
+            pre = root; // Update predecessor
+            findPre(root->right, pre, key);
+        } else {
+            findPre(root->left, pre, key);
+        }
+    }
+
+    void findSuc(Node* root, Node*& suc, int key) {
+        if (!root) return;
+        
+        if (root->key == key) {
+            if (root->right) {
+                suc = root->right;
+                while (suc->left) suc = suc->left;
+            }
+        } else if (root->key < key) {
+            findSuc(root->right, suc, key);
+        } else {
+            suc = root; // Update successor
+            findSuc(root->left, suc, key);
+        }
+    }
+
+    void findPreSuc(Node* root, Node*& pre, Node*& suc, int key) {
+        pre = nullptr;
+        suc = nullptr;
+        findPre(root, pre, key);
+        findSuc(root, suc, key);
+    }
+};
+*/
