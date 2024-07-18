@@ -27,3 +27,53 @@ class Solution
     }
 };
 
+//
+/*
+delete n nodes after m nodes
+  The input list will have at least one element
+  Node is defined as
+
+struct Node
+{
+    int data;
+    struct Node *next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+
+};
+
+*/
+class Solution {
+  public:
+    void linkdelete(struct Node **head, int n, int m) {
+       if(n==0) return;
+       else if(m==0)
+       {
+         *head = NULL;
+       }
+        Node* curr = *(head);
+       while(curr)
+       {
+           //skip m nodes
+            int count = 1;
+            while(curr && count<m)
+            {
+                count++;
+                curr = curr->next;
+            }
+            if(!curr) return;
+            //delete n nodes
+            count = 0;
+            while(curr && curr->next &&  count<n)
+            {
+                curr->next = curr->next->next;
+                count++;
+            }
+           if(curr) curr = curr->next;
+       }
+       
+    }
+};
