@@ -21,10 +21,10 @@ class Solution{
     	int maxPlatforms = 1;
     	for(int i =0;i<n;i++)
     	{
-    	    int current=1;
+    	    int current=0;
     	    for(int j=0;j<n;j++)
     	    {
-    	        else if(arr[i] >= arr[j] && dep[j] >= arr[i])
+    	        if(arr[i] >= arr[j] && dep[j] >= arr[i])
     	        current++;
     	    }
     	    maxPlatforms = max(current,maxPlatforms);
