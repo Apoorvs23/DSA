@@ -1,5 +1,10 @@
 //https://www.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1
+/*
+Time Complexity: O(N*N) as we are using double for loop. 
+If worst case in Set then Insertion can take upto to O(N); O(NxNxN) = O(N^3) 
 
+Space Complexity: O(N) as we are using set.
+*/
 class Solution{
 public:
 
