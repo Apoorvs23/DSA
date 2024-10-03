@@ -1,6 +1,41 @@
 
 //https://www.geeksforgeeks.org/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/1
 //TC: O(N), SC:(1)
+
+
+
+   Node* linkdelete(Node* head, int n, int m) {
+       if(!n) return head;
+       else if(!head || m==0) return NULL;
+       
+       Node* temp  = head;
+       while(temp)
+       {
+           int count = 1;
+           while(temp && count<m)
+           {
+               temp = temp->next;
+               count++;
+           }
+           if(!temp) return head;
+           count = 0;
+           while(temp && temp->next && count<n)
+           {
+               Node* deleteNode = temp->next;
+               delete(deleteNode);
+               temp->next = temp->next->next;
+               count++;
+           }
+           if(!temp || !temp->next) return head;
+           temp = temp->next;
+       }
+       
+       
+       
+    }
+
+
+
 class Solution
 {
     public:
