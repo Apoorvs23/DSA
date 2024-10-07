@@ -15,12 +15,20 @@ class Solution
         int pos;
     };
     private:
-    bool static cmp (struct meeting m1, struct meeting m2)
+    // bool static cmp (struct meeting m1, struct meeting m2)
+    // {
+    //     if(m1.end<m2.end) return true; // dont swap
+    //     else if(m1.end>m2.end) return false; //  swap
+    //     else if(m1.pos<m2.pos) return true; // dont swap
+    //     return false; //swap
+    // }
+    bool static cmp(meeting m1, meeting m2)
     {
-        if(m1.end<m2.end) return true; // dont swap
-        else if(m1.end>m2.end) return false; //  swap
-        else if(m1.pos<m2.pos) return true; // dont swap
-        return false; //swap
+      if(m1.end == m2.end)
+      {
+          return m1.pos<m2.pos;
+      }
+      return m1.end<m2.end;      
     }
     public:
     //Function to find the maximum number of meetings that can
