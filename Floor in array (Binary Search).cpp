@@ -1,0 +1,27 @@
+//https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1
+
+//TC: O(LogN)
+//SC: O(1)
+
+int findFloor(vector<long long> &v, long long n, long long x) {
+     
+     int l = 0, h = n-1;
+     int floor = -1;
+     while(l<=h)
+     {
+         int mid = l + (h-l)/2;
+         if(v[mid]==x)
+            return mid; 
+         else if(v[mid]<x)
+         {
+             floor = mid;
+             l = mid+1;
+         }
+         else
+         {
+             h = mid-1;
+         }
+     }
+     return floor;
+       
+    }
